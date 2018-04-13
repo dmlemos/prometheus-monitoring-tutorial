@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  node-exporter:
+    image: quay.io/prometheus/node-exporter
+    volumes:
+      - ./node-exporter/:/etc/node-exporter/
+    command:
+      - '--collector.textfile.directory=/etc/node-exporter/'
+    ports:
+      - 9100:9100
+    networks:
+      - monitoring
+    restart: always
+
+  prometheus:
+    image: quay.io/prometheus/prometheus:v2.2.1
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    ports:
+      - 9090:9090
+    networks:
+      - monitoring
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: always
+
+networks:
+  monitoring:

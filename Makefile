@@ -34,10 +34,14 @@ endif
 
 .PHONY: render-prometheus-config
 render-prometheus-config:
-	@erb -T - $(circuits) $(PROMETHEUS_CONFIG).erb > $(PROMETHEUS_CONFIG)
+	@erb -T - $(circuits) $(metrics) $(PROMETHEUS_CONFIG).erb > $(PROMETHEUS_CONFIG)
 
 show-prometheus-config:
 	@cat $(PROMETHEUS_CONFIG)
+
+.PHONY: drop-expensive-metric
+drop-expensive-metric:
+	@$(render_circuit) metrics="expensive_metric=$(metric)"
 
 #------
 # Tips

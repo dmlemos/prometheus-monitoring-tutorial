@@ -16,3 +16,10 @@ scrape_configs:
     action: replace
     replacement: $1
     target_label: instance
+
+  <%- if defined? drop_expensive_metric -%>
+  metric_relabel_configs:
+  - source_labels: [__name__]
+    regex: <%= expensive_metric %>
+    action: drop
+  <%- end -%>

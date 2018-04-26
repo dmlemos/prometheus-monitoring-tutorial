@@ -29,3 +29,22 @@ make tips
 ```
 
 These are a list of queries that may prove useful.
+
+## See It In Action
+
+### Example 1 - Drop expensive metrics
+
+To get a list of expensive metrics, use this tip on your Prometheus PromQL:
+```bash
+make tip-expensive-metrics
+```
+
+Then to drop the expensive metric onto the prometheus config:
+```bash
+make drop-expensive-metric metric=<metric name>
+```
+
+Reload prometheus:
+```bash
+make reload-prometheus
+```

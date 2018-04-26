@@ -23,3 +23,9 @@ scrape_configs:
     regex: <%= expensive_metric %>
     action: drop
   <%- end -%>
+  <%- if defined? drop_go_stacktrace -%>
+  metric_relabel_configs:
+  - source_labels: [__name__]
+    regex: (^go_.*)
+    action: drop
+  <%- end -%>

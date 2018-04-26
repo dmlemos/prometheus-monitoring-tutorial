@@ -1,7 +1,8 @@
 # Description
 
 Deploy a Prometheus + Grafana stack using docker-compose.
-This is mostly to understand how all the components work. Do not use in production!
+
+This is an interactive tutorial to understand how all the components work. Do not use in production!
 
 ## Requirements
 
@@ -32,7 +33,14 @@ These are a list of queries that may prove useful.
 
 ## See It In Action
 
-### Example 1 - Drop expensive metrics
+It is assumed that after you modify the Prometheus configuration you reload it to see the effects:
+
+Reload after every change:
+```bash
+make reload-prometheus
+```
+
+### Example 1 - Drop expensive metrics
 
 To get a list of expensive metrics, use this tip on your Prometheus PromQL:
 ```bash
@@ -44,7 +52,9 @@ Then to drop the expensive metric onto the prometheus config:
 make drop-expensive-metric metric=<metric name>
 ```
 
-Reload prometheus:
+### Example 1.1 - Drop all go stack traces
+
+Eliminate all go stack traces:
 ```bash
-make reload-prometheus
+make drop-go-stacktrace
 ```

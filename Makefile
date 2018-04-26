@@ -43,6 +43,10 @@ show-prometheus-config:
 drop-expensive-metric:
 	@$(render_circuit) metrics="expensive_metric=$(metric)"
 
+.PHONY: drop-go-stacktrace
+drop-go-stacktrace:
+	@$(render_circuit)
+
 #------
 # Tips
 # -----

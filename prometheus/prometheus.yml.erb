@@ -10,3 +10,9 @@ scrape_configs:
   - targets:
     - node-exporter:9100
 
+  relabel_configs:
+  - source_labels: [__address__]
+    regex: (.*)(?::\d+)
+    action: replace
+    replacement: $1
+    target_label: instance

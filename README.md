@@ -19,3 +19,13 @@ make stackup
 You now have a full stack running. \
 `Prometheus` is serving on port `9090` \
 `node-exporter` is serving on port `9100`
+
+## Tips
+
+Included is a few Prometheus tips that help you on the learning journey.
+To get a list of tips, execute:
+```bash
+make tips
+```
+
+These are a list of queries that may prove useful.

@@ -38,3 +38,8 @@ render-prometheus-config:
 
 show-prometheus-config:
 	@cat $(PROMETHEUS_CONFIG)
+
+#------
+# Tips
+# -----
+include tips.mk

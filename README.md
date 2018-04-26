@@ -13,5 +13,9 @@ This is mostly to understand how all the components work. Do not use in producti
 Clone the project.
 
 ```bash
-docker-compose up
+make stackup
 ```
+
+You now have a full stack running. \
+`Prometheus` is serving on port `9090` \
+`node-exporter` is serving on port `9100`

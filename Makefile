@@ -1,8 +1,9 @@
 TOP_DIR  := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-TOP_SELF := $(subst -,,$(notdir $(patsubst %/,%,$(abspath $(TOP_DIR)))))
+TOP_SELF := $(notdir $(patsubst %/,%,$(abspath $(TOP_DIR))))
 
 PROMETHEUS_CONFIG := $(TOP_DIR)/prometheus/prometheus.yml
-TEMPLATES_DIR := $(TOP_DIR)/templates
+TEMPLATES_DIR     := $(TOP_DIR)/templates
+DOCKER_PROJECT    := $(TOP_SELF)
 
 # ---------------
 # Stack controls
@@ -10,7 +11,7 @@ TEMPLATES_DIR := $(TOP_DIR)/templates
 
 .PHONY: stackup
 stackup: render-prometheus-config
-	@docker-compose up
+	@docker-compose -p $(DOCKER_PROJECT) up
 
 .PHONY: reload-%
 reload-%:
